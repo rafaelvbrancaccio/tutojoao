@@ -1,19 +1,22 @@
-import  React from 'react';
-import { StyledHeader, StyledHeaderImage, StyledHeaderText } from './style';
-import { Image, Text } from 'react-native';
+import React from 'react';
+import {StyledHeader, StyledHeaderImage, StyledHeaderText} from './style';
+import {User} from '../../../../types/User';
 
-// interface OwnProps {
-//     name: string;
-//     image: string;
-// }
-
-const Header = () => {
-    return (
-        <StyledHeader>
-            <StyledHeaderImage source={{uri: 'https://149351363.v2.pressablecdn.com/wp-content/uploads/2022/06/ronaldinho-gaucho-palestras.jpg'}}/>
-            <StyledHeaderText>Olá, user</StyledHeaderText>
-        </StyledHeader>
-    );
+interface OwnProps {
+  currentUser: User;
 }
+
+const Header = (props: OwnProps) => {
+  return (
+    <StyledHeader>
+      <StyledHeaderImage
+        source={{
+          uri: props.currentUser.image,
+        }}
+      />
+      <StyledHeaderText>Olá, {props.currentUser.name}</StyledHeaderText>
+    </StyledHeader>
+  );
+};
 
 export default Header;
